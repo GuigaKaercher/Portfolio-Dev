@@ -5,17 +5,15 @@ import todolistImage from './assets/todolist-project.png'
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
 
   const role = 'Full Stack Developer';
 
   // Efeito de digitação que se repete a cada 2 segundos
   useEffect(() => {
     let currentIndex = 0;
-    let typingInterval: NodeJS.Timeout;
+    let typingInterval: number;
 
     const startTyping = () => {
-      setIsTyping(true);
       currentIndex = 0;
 
       typingInterval = setInterval(() => {
@@ -24,7 +22,6 @@ function App() {
           currentIndex++;
         } else {
           clearInterval(typingInterval);
-          setIsTyping(false);
           // Espera 2 segundos e recomeça
           setTimeout(() => {
             setDisplayedText('');
